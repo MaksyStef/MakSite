@@ -1,0 +1,78 @@
+/* Ensure full height and smooth scroll snapping */
+html, body {
+  scroll-behavior: smooth;
+}
+
+.full-page {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.sector {
+  height: 100vh; /* Full viewport height for each sector */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+
+  &__column {
+    flex: 1 1 50% !important;
+  } 
+
+  &__lower-row {
+    height: 100%;
+  }
+}
+
+/* Add a little more smooth scroll experience */
+.container-fluid {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.btn {
+  &_further {
+    position: relative;
+    --bs-btn-color: #eee !important;
+    --bs-btn-hover-color: white !important;
+
+    &:hover {
+      border-color: transparent !important;
+    }
+
+    &::after {
+      position: absolute;
+      display: inline-block;
+      left: 50%;
+      bottom: 0;
+      translate: -50% 28px;
+      font-size: 1.5em;
+      rotate: -90deg;
+      content: "«";
+      animation: arrow 1s ease-in-out infinite;
+    }
+  }
+}
+.btn-success {
+  --bs-btn-bg: rgb(27, 233, 20) !important;
+  --bs-btn-hover-bg: #20c997 !important;
+  text-shadow: 0 0 6px #000;
+
+}
+
+
+@keyframes arrow {
+  0% {
+    transform: translate(0, 0);
+  }  
+  33% {
+    transform: translate(-6px, 0);
+  }  
+  66% {
+    transform: translate(6px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
